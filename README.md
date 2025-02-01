@@ -22,11 +22,26 @@ Este proyecto es una API para la creación y gestión de tareas de procesamiento
     MONGODB_URI=mongodb://localhost:27017/pt-between-tech-inditex
     PORT=3000
     ```
+
 4. Ejecución.
 
     ```
     npm run dev
     ```
+
+## Inicialización con datos de ejemplo de la base de datos (opcional).
+Inicializa la base de datos con datos de ejemplo:
+
+  ```
+  npm run initdb
+  ```
+
+## Tests.
+Ejecuta las pruebas definidas en el proyecto utilizando Jest.
+
+  ```
+  npm test
+  ```
 
 ## Endpoints
 URL: **/tasks**
