@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-interface IImage extends Document {
+export interface IImage extends Document {
   _id: string;
   path: string;
   resolution: string;

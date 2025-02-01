@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-interface ITask extends Document {
+export interface ITask extends Document {
   _id: string;
   status: string;
   price: number;
