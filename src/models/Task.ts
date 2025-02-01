@@ -1,12 +1,22 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, Document } from 'mongoose';
 
-const TaskSchema = new mongoose.Schema(
+interface ITask extends Document {
+  _id: string;
+  status: string;
+  price: number;
+  imageUrl: string;
+  images:string[];
+}
+
+const TaskSchema: Schema = new mongoose.Schema(
   {
-    status: { type: String, enum: ["pending", "processing", "completed"], required: true, index: true },
+    status: { type: String, enum: ["pending", "completed", "failed"], required: true, index: true },
     price: { type: Number, required: true },
-    originalPath: { type: String, required: true },
+    imageUrl: { type: String, required: true },
+    images: [{ type: Schema.Types.ObjectId, ref: 'Image' }]
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Task", TaskSchema);
+const Task = mongoose.model<ITask>('Task', TaskSchema);
+export default Task;

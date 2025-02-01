@@ -1,15 +1,22 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
-const ImageSchema = new mongoose.Schema(
+interface IImage extends Document {
+  _id: string;
+  path: string;
+  resolution: string;
+  md5: string;
+  task: mongoose.Types.ObjectId;
+}
+
+const ImageSchema: Schema = new mongoose.Schema(
   {
     path: { type: String, required: true, unique: true },
-    resolution: {
-      width: { type: Number, required: true },
-      height: { type: Number, required: true },
-    },
-    md5: { type: String, required: true, unique: true },
+    resolution: { type: String, required: true },
+    md5: { type: String, required: true },
+    task: { type: mongoose.Schema.Types.ObjectId, ref: 'Task' }
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Image", ImageSchema);
+const Image = mongoose.model<IImage>('Image', ImageSchema);
+export default Image;
